@@ -1,0 +1,48 @@
+<style>
+    .details {
+        display: none;
+    }
+</style>
+
+<body>
+    <select id="stateProvince" name="stateProvince">
+        <option value="NONE">Select a State/Province</option>
+        <option value="VBC">Vitoria</option>
+        <option value="OR">Oregon</option>
+        <option value="GA">Georgia</option>
+    </select>
+    <div id="VBC" class="details">
+        More about Victoria British Columbia
+    </div>
+    <div id="OR" class="details">
+        More about Oregon
+    </div>
+    <div id="GA" class="details">
+        More about Georgia
+    </div>
+</body>
+<script>
+    //NAMED FUNCTION
+    // function hideElement(element){
+    //     element.style.display = "none";
+    // }
+    function onChangeState() {
+        let select = document.getElementById("stateProvince");
+        let item = select.options[select.selectedIndex];
+
+        //HIDE ALL DETAILS
+        let detailsHtmlCollection = document.getElementsByClassName("details");
+        let detailsArrayList = Array.from(detailsHtmlCollection); //CONVERT COLLECTION TO ARRAY
+        // detailsArrayList.forEach(hideElement); //NAMED FUNCTION
+        detailsArrayList.forEach(e => e.style.display = "none") //INLINE ANONYMOUS FUNCTION "fat-arrow"
+
+        console.log(item);
+        //SHOW THE SELECT
+        let detail = document.getElementById(item.value);
+        if (detail != null) { //LOOK BEFORE LEAP
+            detail.style.display = "block";
+        }
+    }
+    document.getElementById("stateProvince").addEventListener("change", onChangeState);
+
+</script>
