@@ -1,0 +1,123 @@
+<!-- FoodMenu mini-project - Workbook4, Section 3-16, page 68-->
+<!-- <style>
+    body {
+        color:blanchedalmond;
+        background-color: rgb(0,0,96);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+    #menu {
+        vertical-align: middle;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        justify-items:flex-start;
+    }
+    select.naked {
+        background: none;
+        overflow-y: visible;
+        border: none;
+        font-size: 3vh;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+    }
+    .inline {
+        display: inline-flex;
+        width: auto;
+        vertical-align: middle;
+    }
+    option.big-target {
+        border-radius: 1em;
+        box-shadow: 0.125em 0.125em;
+        border: 0.125em solid white;
+        margin: 1em;
+        width: 18em;
+        height: 5em;
+        display: flex;
+        background: goldenrod;
+        color: darkblue;
+        justify-content: center;
+        align-items: center;
+    }
+    option.big-target {
+        background: darkblue !important;
+        color: goldenrod;
+    }
+</style> -->
+
+<body>
+    <div id="menu">
+        <select id="category" size="3" class="naked inline">
+            <option value="drinks" class="big-target">
+                Drinks
+            </option>
+            <option value="entrees" class="big-target">
+                Entrees
+            </option>
+            <option value="desserts" class="big-target">
+                Desserts
+            </option>
+        </select>
+        <div class="inline">
+            <select id="results" size="12" class="naked inline"></select>
+        </div>
+    </div>
+</body>
+<script>
+    let menu = {
+        drinks: [
+            "Water",
+            "Tea",
+            "Sweet Tea",
+            "Coke",
+            "Dr. Pepper",
+            "Sprite"
+        ],
+        entrees: [
+            "Hamburger w/ Fries",
+            "Grilled Cheese w/ Tater Tots",
+            "Grilled Chicken w/ Veggies",
+            "Chicken Fried Steak w/ Mashed Potatoes",
+            "Fried Shrimp w/ Coleslaw",
+            "Veggie Plate"
+        ],
+        desserts: [
+            "Cheesecake",
+            "Chocolate Cake",
+            "Snickerdoodle Cookie"
+        ]
+    };
+    //1. find category list and listen for its change event.
+    let categoryElement = document.getElementById("category");
+    categoryElement.addEventListener("change", () => {
+        let selectedOption = categoryElement.selectedOptions[0];
+        let value = selectedOption.value;
+        
+        //2. find selected category value corresponding list of strings in the data
+        let list = menu[value];
+        
+        //3. clear existing options
+        let results = document.getElementById("results");
+        results.innerHTML = ""; //quick way to clear all options
+        
+        //BONUS we set size to list length
+        results.setAttribute("size", list.length);
+
+        //4. add an option for each string
+        for(i=0; i < list.length; i++){
+            let option = document.createElement("option");
+            option.innerHTML = list[i];
+            option.setAttribute("class", "big-target"); //bonus
+            results.appendChild(option);
+        }
+    }); //END CHANGE LISTENER FUNCTION
+
+</script>

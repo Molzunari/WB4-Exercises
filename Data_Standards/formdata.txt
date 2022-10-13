@@ -1,0 +1,11 @@
+//non-hierarchical data - flat - 2 dimensional
+key1=value1
+key2=value2
+key3=value3
+first_name1=Chad
+last_name1=Jackson
+age1=55
+first_name2=Nina
+last_name2=Marie
+age2=55
+fruit=apple,banana,cherry
